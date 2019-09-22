@@ -1,0 +1,232 @@
+ var jsonData = `
+ 
+ 
+ {
+    "no_of_total_keys_in_redis": {
+        "total": 54182728,
+        "by_pattern": {
+            "project:info": 18086636,
+            "project:name": 18091935,
+            "project:account": 7038466,
+            "project:login": 3956102,
+            "project:email_address": 6988806,
+            "project:test": 2681,
+            "feature_name:mahabub": 8732,
+            "project:blogs": 53,
+            "project:post": 117,
+            "feature_name:category": 4569,
+            "project:total_post": 12,
+            "feature_name:today": 4563,
+            "project:features": 2,
+            "project:acc_settings": 1,
+            "project:user_groups": 2,
+            "project:post_groups": 2,
+            "project:test11": 1,
+            "project:feature2": 1,
+            "project:terms": 31,
+            "project:user_comments": 4,
+            "project:user_avatar": 6,
+            "project:abcef": 1,
+            "project:down": 1,
+            "project:config1": 1,
+            "project:total_post:": 1,
+            "project:total_post:countries": 1,
+            "project:currency": 1
+        }
+    },
+    "no_of_expired_keys_in_redis": {
+        "total": 10030,
+        "by_pattern": {
+            "project:test": 771,
+            "feature_name:category": 4568,
+            "project:total_post": 10,
+            "feature_name:today": 4563,
+            "project:post": 27,
+            "project:blogs": 50,
+            "project:terms": 31,
+            "project:user_comments": 4,
+            "project:abcef": 1,
+            "project:down": 1,
+            "project:config1": 1,
+            "project:total_post:": 1,
+            "project:total_post:countries": 1,
+            "project:currency": 1
+        }
+    },
+    "no_of_keys_do_not_have_expiry": {
+        "total": 50205860,
+        "by_pattern": {
+            "project:info": 18086636,
+            "project:name": 18091935,
+            "project:account": 7038466,
+            "project:email_address": 6988806,
+            "project:blogs": 3,
+            "project:features": 2,
+            "project:user_groups": 2,
+            "project:login": 1,
+            "project:total_post": 2,
+            "project:post_groups": 2,
+            "feature_name:category": 1,
+            "project:test11": 1,
+            "project:post": 1,
+            "project:feature2": 1,
+            "feature_name:mahabub": 1
+        }
+    },
+    "key_size": {
+        "total": 4012934959,
+        "by_pattern": {
+            "project:info": 18086636,
+            "project:name": 180919350,
+            "project:account": 242713899,
+            "project:login": 1461217918,
+            "project:email_address": 1068919421,
+            "project:test": 2681,
+            "feature_name:mahabub": 1035069431,
+            "project:blogs": 2381,
+            "project:post": 20873,
+            "feature_name:category": 95949,
+            "project:total_post": 146071,
+            "feature_name:today": 4184557,
+            "project:features": 276014,
+            "project:acc_settings": 7289,
+            "project:user_groups": 236,
+            "project:post_groups": 378,
+            "project:test11": 1851,
+            "project:feature2": 2312,
+            "project:terms": 30858,
+            "project:user_comments": 1201836,
+            "project:user_avatar": 4748,
+            "project:abcef": 20319,
+            "project:down": 38,
+            "project:config1": 148,
+            "project:total_post:": 26,
+            "project:total_post:countries": 26,
+            "project:currency": 9713
+        }
+    },
+    "expiration_time": {
+        "2019-10-24": {
+            "by_pattern": {
+                "project:login": 301099
+            },
+            "total": 301099
+        },
+        "2019-11-01": {
+            "by_pattern": {
+                "project:login": 581500
+            },
+            "total": 581500
+        },
+        "2019-10-22": {
+            "by_pattern": {
+                "project:login": 287219
+            },
+            "total": 287219
+        },
+        "2019-10-31": {
+            "by_pattern": {
+                "project:login": 478617
+            },
+            "total": 478617
+        },
+        "2019-10-29": {
+            "by_pattern": {
+                "project:login": 376314
+            },
+            "total": 376314
+        },
+        "2019-10-26": {
+            "by_pattern": {
+                "project:login": 266766
+            },
+            "total": 266766
+        },
+        "2019-10-25": {
+            "by_pattern": {
+                "project:login": 249487
+            },
+            "total": 249487
+        },
+        "2019-10-23": {
+            "by_pattern": {
+                "project:login": 255546
+            },
+            "total": 255546
+        },
+        "2019-10-27": {
+            "by_pattern": {
+                "project:login": 299277
+            },
+            "total": 299277
+        },
+        "2019-10-30": {
+            "by_pattern": {
+                "project:login": 407768
+            },
+            "total": 407768
+        },
+        "2019-10-28": {
+            "by_pattern": {
+                "project:login": 300585
+            },
+            "total": 300585
+        },
+        "2019-11-02": {
+            "by_pattern": {
+                "project:login": 124751
+            },
+            "total": 124751
+        },
+        "2019-08-04": {
+            "by_pattern": {
+                "project:test": 2270,
+                "project:post": 55,
+                "feature_name:category": 4568,
+                "project:total_post": 10,
+                "feature_name:today": 4563,
+                "project:blogs": 50,
+                "project:terms": 31,
+                "project:user_comments": 4,
+                "project:abcef": 1,
+                "project:down": 1,
+                "project:config1": 1,
+                "project:total_post:": 1,
+                "project:total_post:countries": 1,
+                "project:currency": 1
+            },
+            "total": 11557
+        },
+        "2019-10-21": {
+            "by_pattern": {
+                "project:login": 27172
+            },
+            "total": 27172
+        },
+        "2019-08-05": {
+            "by_pattern": {
+                "feature_name:mahabub": 8731,
+                "project:test": 411,
+                "project:acc_settings": 1,
+                "project:post": 61,
+                "project:user_avatar": 6
+            },
+            "total": 9210
+        }
+    },
+    "total_commands_run": {
+        "total": 72650176,
+        "by_pattern": {
+            "SELECT": 3,
+            "SET": 60409796,
+            "PEXPIREAT": 10148759,
+            "RPUSH": 55292,
+            "DEL": 2033934,
+            "INCR": 2392
+        }
+    },
+    "file_size": 10809825948,
+    "execution_time": 1611.4686288833618
+}
+ 
+ `;

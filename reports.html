@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <title> Redis Aof Analyzer</title>
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div id="total-keys"></div>
+        </div>
+        <div class="col-md-6">
+			<div id="expired-keys"></div>
+		</div>
+    </div>
+    
+    <div class="row">
+		<div class="col-md-6">
+                <div id="not-expired-keys"></div>
+		</div>
+		<div class="col-md-6">
+                <div id="size"></div>
+		</div>
+    </div>
+
+
+    <div class="row">
+            <div class="col-md-4">
+                   
+            </div>
+            <div class="col-md-8">
+                    <div id="expire-line-chart"></div>
+            </div>
+        </div>
+    
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="./final.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var obj = jQuery.parseJSON( jsonData);
+    var populateGraph = function (Data, divId, title, total) {
+    var graphData = [];
+    $.each(Data, function (index, val) {
+        graphData.push({
+            'name': index,
+            'y': parseInt(val, 10)
+        })
+    })
+    console.log(graphData)
+    Highcharts.chart(divId, {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: title + ' <b>' + total + '</b>'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: {point.y:.1f}',
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.y:.1f}',
+                }
+            }
+        },
+        series: [{
+            name: 'Total',
+            colorByPoint: true,
+            data: graphData
+        }]
+    });
+}
+    populateGraph(obj.no_of_total_keys_in_redis['by_pattern'], 'total-keys', 'Total Key in Redis', obj.no_of_total_keys_in_redis['total'])
+    populateGraph(obj.no_of_expired_keys_in_redis['by_pattern'], 'expired-keys', 'Expired Key in Redis', obj.no_of_expired_keys_in_redis['total'])
+    populateGraph(obj.no_of_keys_do_not_have_expiry['by_pattern'], 'not-expired-keys', 'Keys Dont have expiry', obj.no_of_keys_do_not_have_expiry['total'])
+    populateGraph(obj.key_size['by_pattern'], 'size', 'Size in Memory', obj.key_size['total'])
+
+
+    var lineChartData = [];
+    var linechartDate = []
+    $.each(obj.expiration_time, function (index, val) {
+        lineChartData.push(val['total']);
+        linechartDate.push(index);
+    })
+
+    Highcharts.chart('expire-line-chart', {
+
+title: {
+    text: 'Key Expire Graph'
+},
+
+
+yAxis: {
+    title: {
+        text: 'Number Of Keys'
+    }
+},
+legend: {
+    layout: 'vertical',
+    align: 'right',
+    verticalAlign: 'middle'
+},
+
+xAxis: {
+                     categories: linechartDate,
+                     labels: {
+                        rotation: -45,
+                        align: 'right',
+                        style: {
+                            font: 'normal 13px Verdana, sans-serif'
+                        }
+                     }
+
+                  },
+
+series: [{
+    name: 'Keys',
+    data: lineChartData
+}],
+
+responsive: {
+    rules: [{
+        condition: {
+            maxWidth: 500
+        },
+        chartOptions: {
+            legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+            }
+        }
+    }]
+}
+
+});
+
+    
+
+
+})
+
+</script>
+</body>
+</html>
